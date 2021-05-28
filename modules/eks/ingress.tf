@@ -48,7 +48,7 @@ resource "helm_release" "ingress_gateway" {
   }
 
   set {
-    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-cert"
+    name  = "controller.service.annotations.service\\.v1beta1\\.kubernetes\\.io/aws-load-balancer-ssl-cert"
     value = var.cert_arn
   }
 }

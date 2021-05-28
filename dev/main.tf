@@ -37,7 +37,7 @@ module "dev_eks" {
   #
   org_name = "product-development"
   # ingress
-  dns_base_domain               = "trexup.systems"
+  dns_base_domain               = var.domain
   ingress_gateway_chart_name    = "nginx-ingress"
   ingress_gateway_chart_repo    = "https://helm.nginx.com/stable"
   ingress_gateway_chart_version = "0.5.2"
@@ -45,10 +45,10 @@ module "dev_eks" {
     "controller.service.annotations.service\\.v1beta1\\.kubernetes\\.io/aws-load-balancer-connection-idle-timeout" = "60",
     "controller.service.annotations.service\\.v1beta1\\.kubernetes\\.io/aws-load-balancer-type"                    = "elb"
   }
-  cert_arn = "arn:aws:acm:us-west-2:348736133112:certificate/24d4a120-fedd-47b9-bd46-cd22cc5b738c"
+  cert_arn = var.cert_arn
   # namespace
-  namespaces = ["portal"]
+  namespaces = ["demo"]
   # subdomains
-  deployments_subdomains=["portal"] # to be prefixed before dns_base_domain (e.g. sample.eks.singh.cl or api.eks.singh.cl), and handled by Ingress rules defined by each Application Helm Chart
+  deployments_subdomains=["demo"] # to be prefixed before dns_base_domain (e.g. sample.eks.singh.cl or api.eks.singh.cl), and handled by Ingress rules defined by each Application Helm Chart
 
 }
