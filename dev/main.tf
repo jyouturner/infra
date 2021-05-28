@@ -47,8 +47,8 @@ module "dev_eks" {
   }
   cert_arn = var.cert_arn
   # namespace
-  namespaces = ["demo"]
+  namespaces = ["demo", "customer-portal"]
   # subdomains
-  deployments_subdomains=["demo"] # to be prefixed before dns_base_domain (e.g. sample.eks.singh.cl or api.eks.singh.cl), and handled by Ingress rules defined by each Application Helm Chart
+  deployments_subdomains=["demo", "customer-portal"] # to be prefixed before dns_base_domain (e.g. sample.eks.singh.cl or api.eks.singh.cl), and handled by Ingress rules defined by each Application Helm Chart
 
 }
