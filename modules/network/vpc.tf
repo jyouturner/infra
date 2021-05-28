@@ -4,7 +4,6 @@ data "aws_availability_zones" "available_azs" {
 }
 
 # reserve Elastic IP to be used in our NAT gateway
-/* comment out to save money
 resource "aws_eip" "nat_gw_elastic_ip" {
   vpc = true
 
@@ -13,7 +12,7 @@ resource "aws_eip" "nat_gw_elastic_ip" {
     env = var.env
   }
 }
-*/
+
 
 # create VPC using the official AWS module
 module "vpc" {
@@ -48,7 +47,7 @@ module "vpc" {
   one_nat_gateway_per_az = false
   enable_dns_hostnames   = true
   reuse_nat_ips          = true
-  #external_nat_ip_ids    = [aws_eip.nat_gw_elastic_ip.id]
+  external_nat_ip_ids    = [aws_eip.nat_gw_elastic_ip.id]
 
   # add VPC/Subnet tags required by EKS
   tags = {

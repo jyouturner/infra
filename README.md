@@ -45,7 +45,16 @@ prod
 global
     - DNS, email server etc.
     - The reason that we don't have them in the "prod" because most of time, once those resources are created we don't change them much (well, DNS can be exception), and we really don't want to screw up this part.
+    - !!! this is not really used though !!!
+
+    instead, I registered the domain name and a Route53 host zone is created by AWS, then, requested SSL CERT for trexup.systems and *.trexup.systems at ACM.
+    We will use the Zone and SSL CERT in DEV and PROD
 ````
+
+````
+
+Host Zone Id: Z061080511OF2GANCGGP7
+CERT ACN: 
 
 Each of the above folders declares the resources of the particular environments, through "main.tf", with variables in "variables.tf".
 
@@ -147,3 +156,8 @@ It is always good practice to tag those resources. Particularily below tags
 
 4. Email:
 
+## Kubectl
+
+````
+aws eks --region us-west-2 update-kubeconfig --name dev-eks
+````

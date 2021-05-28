@@ -2,14 +2,6 @@ provider "aws" {
   region = var.region
 }
 
-module "website_dev_s3_bucket" {
-  source = "../modules/static"
-  site_name = "awesomesite"
-  env = "dev"
-  domain = var.domain
-  cert_arn = var.cert_arn
-  zone_id = var.zone_id
-}
 
 module "dev_vpc" {
   source = "../modules/network"
@@ -25,12 +17,12 @@ module "dev_eks" {
   source = "../modules/eks"
   
   # eks
-  admin_users                              = ["jerry-you"]
-  developer_users                          = ["jerry-you"]
+  admin_users                              = ["jyou"]
+  developer_users                          = ["jyou"]
   asg_instance_types                       = ["t3.small", "t2.small"]
-  autoscaling_minimum_size_by_az           = 0
-  autoscaling_desired_size_by_az           = 0
-  autoscaling_maximum_size_by_az           = 0
+  autoscaling_minimum_size_by_az           = 1
+  autoscaling_desired_size_by_az           = 1
+  autoscaling_maximum_size_by_az           = 1
   autoscaling_average_cpu                  = 50
   spot_termination_handler_chart_name      = "aws-node-termination-handler"
   spot_termination_handler_chart_repo      = "https://aws.github.io/eks-charts"
@@ -40,21 +32,20 @@ module "dev_eks" {
   private_subnets = module.dev_vpc.private_subnets
   cluster_name = "dev-eks"
   available_azs = module.dev_vpc.available_azs
-  org_name = "prod-dev"
+  #
+  # the name of the company or the organization
+  #
+  org_name = "product-development"
   # ingress
-  dns_base_domain               = "trexup.co"
+  dns_base_domain               = "trexup.systems"
   ingress_gateway_chart_name    = "nginx-ingress"
   ingress_gateway_chart_repo    = "https://helm.nginx.com/stable"
   ingress_gateway_chart_version = "0.5.2"
   ingress_gateway_annotations = {
-    "controller.service.httpPort.targetPort"                                                                    = "http",
-    "controller.service.httpsPort.targetPort"                                                                   = "http",
-    "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-backend-protocol"        = "http",
-    "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-ports"               = "https",
-    "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-connection-idle-timeout" = "60",
-    "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"                    = "elb"
+    "controller.service.annotations.service\\.v1beta1\\.kubernetes\\.io/aws-load-balancer-connection-idle-timeout" = "60",
+    "controller.service.annotations.service\\.v1beta1\\.kubernetes\\.io/aws-load-balancer-type"                    = "elb"
   }
-  cert_id = "3e022dde-bb86-4309-81ee-49d007f04494" #the id of the SSL cert
+  cert_arn = "arn:aws:acm:us-west-2:348736133112:certificate/24d4a120-fedd-47b9-bd46-cd22cc5b738c"
   # namespace
   namespaces = ["portal"]
   # subdomains

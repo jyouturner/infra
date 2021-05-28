@@ -1,7 +1,8 @@
 region = "us-west-2"
 env = "dev"
-domain = "trexup.co"
-cert_arn = "arn:aws:acm:us-east-1:697394274065:certificate/649f7790-f457-4738-bf56-f6a425ac0bbe"
-zone_id = "Z10082783T7YTZPAHPAIS"
+domain = "trexup.systems"
+cert_arn = "arn:aws:acm:us-east-1:348736133112:certificate/39016e12-6913-4724-8639-78cbf8e735c8"
+zone_id = "Z061080511OF2GANCGGP7"
+
 
 
