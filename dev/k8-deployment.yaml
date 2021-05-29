@@ -19,7 +19,7 @@ metadata:
   namespace: customer-portal
 data:
   config_overrides.py: |
-    DATABASE_URI = 'postgresql://postgres:trextel@postgres.postgres:5432/customer_portal'
+    DATABASE_URI = 'postgresql://postgres:trextel4190470532!@customer-portal-db-dev.cznsivqvvrxf.us-west-2.rds.amazonaws.com:5432/customer_portal'
     SENTRY_DSN = 'https://c52aa3250e8f4fbb9c19313c76693bcd@sentry.trextel.com/11'
     DRAMATIQ_BROKER_URL = 'redis://redis.postgres:6379/2'
 
@@ -133,7 +133,7 @@ metadata:
   namespace: customer-portal
 spec:
   rules:
-    - host: customer-portal-staging.trextel.com
+    - host: dev.customer-portal.trexup.systems
       http:
         paths:
           - path: /
@@ -142,5 +142,5 @@ spec:
               servicePort: 80
   tls:
     - hosts:
-        - customer-portal-staging.trextel.com
+        - dev.customer-portal.trexup.systems
       secretName: trextel-tls
