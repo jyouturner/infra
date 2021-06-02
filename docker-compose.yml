@@ -1,8 +1,9 @@
 version: "3.9"
 services:
-  workstation-terraform-learning:
+  workstation:
     build: .
     env_file: work_station.env
     volumes:
       - .:/infra
+      - ~/.ssh:/root/.ssh
     tty: true

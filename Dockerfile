@@ -3,7 +3,7 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade
-RUN apt-get install -y curl gnupg wget unzip git
+RUN apt-get install -y curl gnupg wget unzip git vim
 RUN apt-get install -y build-essential 
 RUN wget https://releases.hashicorp.com/terraform/0.15.1/terraform_0.15.1_linux_arm64.zip
 RUN unzip terraform_0.15.1_linux_arm64.zip
@@ -23,6 +23,7 @@ RUN curl --silent --location "https://github.com/weaveworks/eksctl/releases/late
 RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh && \
   chmod 700 get_helm.sh && \
   ./get_helm.sh
-
+# Ansible
+RUN apt-get install -y ansible
 WORKDIR /root
 CMD [ "/bin/bash" ]
