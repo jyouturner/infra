@@ -55,7 +55,7 @@ global
 
 Host Zone Id: Z061080511OF2GANCGGP7
 CERT ACN: 
-
+````
 Each of the above folders declares the resources of the particular environments, through "main.tf", with variables in "variables.tf".
 
 The real work is in the "modules"
@@ -157,7 +157,23 @@ It is always good practice to tag those resources. Particularily below tags
 4. Email:
 
 ## Kubectl
-
 ````
 aws eks --region us-west-2 update-kubeconfig --name dev-eks
+````
+
+## Ingress
+
+````
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.46.0/deploy/static/provider/aws/deploy.yaml
+````
+
+to check
+````
+kubectl rollout restart deployment customer-portal --namespace customer-portal
+kubectl rollout status deployment customer-portal --namespace customer-portal
+kubectl get pods --namespace customer-portal
+ kubectl logs customer-portal-6756978744-9jczw --namespace customer-portal
+
+kubectl get ingress --namespace customer-portal
+kubectl get ingress customer-portal-ingress --namespace customer-portal
 ````
