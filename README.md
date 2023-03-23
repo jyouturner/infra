@@ -169,11 +169,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 
 to check
 ````
-kubectl rollout restart deployment customer-portal --namespace customer-portal
-kubectl rollout status deployment customer-portal --namespace customer-portal
-kubectl get pods --namespace customer-portal
- kubectl logs customer-portal-6756978744-9jczw --namespace customer-portal
+kubectl rollout restart deployment app --namespace app
+kubectl rollout status deployment app --namespace app
+kubectl get pods --namespace app
+ kubectl logs app-6756978744-9jczw --namespace app
 
-kubectl get ingress --namespace customer-portal
-kubectl get ingress customer-portal-ingress --namespace customer-portal
+kubectl get ingress --namespace app
+kubectl get ingress app-ingress --namespace app
 ````
