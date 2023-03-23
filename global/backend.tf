@@ -10,7 +10,7 @@
 terraform {
   backend "s3" {
       region = "us-west-2"
-      bucket = "trexup-terraform-infra-state"
+      bucket = "app-infra-state"
       key = "global"
   }
 }
