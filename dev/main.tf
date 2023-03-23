@@ -14,10 +14,10 @@ module "dev_vpc" {
 
 module "dev_db" {
   source = "../modules/db"
-  db_identifier = "customer-portal-db-${var.env}"
-  db_name = "customer_portal"
+  db_identifier = "app-db-${var.env}"
+  db_name = "app"
   db_user = "postgres"
-  db_password = "trextel4190470532!"
+  db_password = "...!"
   db_multi_az = false
   db_instance_type = "db.t3.small"
   vpc_id = module.dev_vpc.vpc_id
@@ -48,6 +48,6 @@ module "dev_eks" {
   org_name = "product-development"
   
   # namespace
-  namespaces = ["demo", "customer-portal"]
+  namespaces = ["demo", "app"]
   
 }

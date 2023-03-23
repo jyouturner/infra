@@ -1,7 +1,7 @@
 
 # Infrastructure
 
-This repo contains the Terraform code for our infrastruture.
+This repo contains the Terraform code for a Demo Infra.
 
 ## Local Working Station
 
@@ -33,7 +33,7 @@ docker exec -it [container name] /bin/bash
 
 ## Terraform Structure
 
-In this project, we are managing the infrastrcture of the whole company or organization.
+In this project, we are managing the infrastrcture of the organization.
 
 ````
 dev
@@ -53,7 +53,7 @@ global
 
 ````
 
-Host Zone Id: Z061080511OF2GANCGGP7
+Host Zone Id: ...
 CERT ACN: 
 ````
 Each of the above folders declares the resources of the particular environments, through "main.tf", with variables in "variables.tf".
