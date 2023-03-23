@@ -37,7 +37,7 @@ variable "db_instance_type" {
 locals {
   tags = {
     team       = "product development"
-    email = "devops@trextel.com"
+    email = "devops@xxx"
     managed = "terraform"
     env = "dev"
   }
