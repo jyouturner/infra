@@ -47,7 +47,7 @@ global
     - The reason that we don't have them in the "prod" because most of time, once those resources are created we don't change them much (well, DNS can be exception), and we really don't want to screw up this part.
     - !!! this is not really used though !!!
 
-    instead, I registered the domain name and a Route53 host zone is created by AWS, then, requested SSL CERT for trexup.systems and *.trexup.systems at ACM.
+    instead, I registered the domain name and a Route53 host zone is created by AWS, then, requested SSL CERT for [domain] and *.[domain] at ACM.
     We will use the Zone and SSL CERT in DEV and PROD
 ````
 

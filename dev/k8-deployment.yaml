@@ -132,7 +132,7 @@ metadata:
   namespace: [app]
 spec:
   rules:
-    - host: dev.[app].trexup.systems
+    - host: dev.[app].[domain]
       http:
         paths:
           - path: /
